@@ -7,8 +7,7 @@ const contactsPath = path.resolve("db", "contacts.json");
 async function getContacts() {
   const contacts = await fs.readFile(contactsPath);
   return JSON.parse(contacts);
-} // для чого повертати розпарсений код?
-// app.use(express.json()); - це для іншого походу для чого ?
+} //
 
 async function updateContacts(contacts) {
   await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
