@@ -2,7 +2,7 @@ import HttpError from "../helpers/HttpError.js";
 import * as contactsService from "../services/contactsServices.js";
 
 export const getAllContacts = async (_, res) => {
-  const result = await contactsService.listContacts();
+  const result = await contactsService.getAll();
   res.json(result);
 };
 
@@ -17,7 +17,7 @@ export const getOneContact = async (req, res) => {
 
 export const deleteContact = async (req, res) => {
   const { id } = req.params;
-  const result = await contactsService.removeContact(id);
+  const result = await contactsService.removeContactById(id);
   if (!result) {
     throw HttpError(404);
   }
@@ -31,9 +31,18 @@ export const createContact = async (req, res) => {
 
 export const updateContact = async (req, res) => {
   const { id } = req.params;
-  const result = await contactsService.updateContact(id, req.body);
+  const result = await contactsService.updateContactById(id, req.body);
   if (!result) {
     throw HttpError(404);
   }
   res.json(result);
 };
+
+export const updateContactStatus = async (req, res) => {
+  const { id } = req.params;
+  const result = await contactsService.updateStatusById(id, req.body);
+  if (!result) {
+    throw HttpError(404);
+  }
+  res.json(result);
+}; //
