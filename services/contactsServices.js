@@ -1,6 +1,6 @@
 import Contact from "../models/Contact.js";
 
-export const getAll = () => Contact.find({}).populate("name"); //
+export const getAll = () => Contact.find({});
 
 export const getContactById = (id) => Contact.findById(id);
 
@@ -12,4 +12,4 @@ export const updateContactById = (id, data) =>
 export const removeContactById = (id) => Contact.findByIdAndDelete(id);
 
 export const updateStatusById = (id, data) =>
-  Contact.findByIdAndUpdate(id, data); 
+  Contact.findByIdAndUpdate(id, data);

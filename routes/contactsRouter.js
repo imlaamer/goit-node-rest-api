@@ -33,15 +33,14 @@ contactsRouter.post(
 contactsRouter.put(
   "/:id",
   isValidId,
-  validateBody(updateContactSchema), //
+  validateBody(updateContactSchema),
   ctrlWrapper(updateContact)
 );
 
-//
 contactsRouter.patch(
   "/:id/favorite",
   isValidId,
-  validateBody(updateContactStatusSchema), //
+  validateBody(updateContactStatusSchema),
   ctrlWrapper(updateContactStatus)
 );
 
