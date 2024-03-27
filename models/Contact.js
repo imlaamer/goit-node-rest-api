@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { handleSaveError, setUpdateSettings } from "./hooks.js";
-import { emailRegex } from "../constants/contact-constants.js";
+import { emailRegex } from "../constants/common-constants.js";
 
 const contactSchema = new Schema(
   {
@@ -14,16 +14,22 @@ const contactSchema = new Schema(
         emailRegex,
         "Set a valid email address in the format example@example.com",
       ],
+      required: [true, "Set email for contact"],
     },
     phone: {
       type: String,
+      required: [true, "Set phone for contact"],
     },
     favorite: {
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Schema.Types.ObjectId, //
+      ref: "user",
+    },
   },
-  { versionKey: false }
+  { versionKey: false, timestamps: true }
 );
 
 contactSchema.post("save", handleSaveError);
