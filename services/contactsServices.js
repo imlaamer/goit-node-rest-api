@@ -1,6 +1,11 @@
 import Contact from "../models/Contact.js";
 
-export const getAll = () => Contact.find({});
+export const getAll = async (filter = {}, page, limit) => {
+  const result = await Contact.find(filter)
+    .skip((page - 1) * limit)
+    .limit(limit);
+  return result;
+};
 
 export const getContactById = (id) => Contact.findById(id);
 
