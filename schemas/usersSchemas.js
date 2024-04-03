@@ -18,6 +18,7 @@ export const userSignUpSchema = Joi.object({
     .messages({
       "any.only": `Choose a valid subscription: ${subscriptions.join(", ")}`,
     }),
+  avatarURL: Joi.string(), //
 });
 
 export const userSignInSchema = Joi.object({
@@ -32,7 +33,7 @@ export const userSignInSchema = Joi.object({
   }),
 });
 
-export const userSubscribtionUpdate = Joi.object({
+export const userSubscriptionUpdateSchema = Joi.object({
   subscription: Joi.string()
     .required()
     .valid(...subscriptions)
