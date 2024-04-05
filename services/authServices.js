@@ -8,10 +8,7 @@ export const createUser = async (data) => {
 
 export const findUser = (filter) => User.findOne(filter);
 
-export const updateToken = (id, token) => User.findOneAndUpdate(id, token); //
+export const updateUser = (id, data) => User.findOneAndUpdate(id, data);
 
 export const comparePasswords = (passwordForCheck, dbPassword) =>
   bcrypt.compare(passwordForCheck, dbPassword);
-
-export const updateUserSubscription = (id, subscription) =>
-  User.findOneAndUpdate(id, subscription);
