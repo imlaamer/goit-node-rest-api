@@ -41,3 +41,11 @@ export const userSubscriptionUpdateSchema = Joi.object({
       "any.only": `Choose a valid subscription: ${subscriptions.join(", ")}`,
     }),
 });
+
+export const userEmailVerificationSchema = Joi.object({
+  email: Joi.string().pattern(emailRegex).required().messages({
+    "string.pattern.base":
+      "Enter a valid email in the format example@example.com",
+    "any.required": "Email is required",
+  }),
+});
